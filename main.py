@@ -130,6 +130,7 @@ class CryptoAPITrading:
 def main():
     api_trading_client = CryptoAPITrading()
     print(api_trading_client.get_account())
+    print(api_trading_client.get_holdings())
 
     """
     BUILD YOUR TRADING STRATEGY HERE
