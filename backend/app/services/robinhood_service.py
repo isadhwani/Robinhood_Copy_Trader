@@ -10,13 +10,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-API_KEY = os.getenv("API_KEY")
-BASE64_PRIVATE_KEY = os.getenv("PRIVATE_KEY")
+# API_KEY = os.getenv("API_KEY")
+# BASE64_PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 
 
 
 class CryptoAPITrading:
-    def __init__(self):
+    def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
         self.api_key = API_KEY
         private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
         # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
