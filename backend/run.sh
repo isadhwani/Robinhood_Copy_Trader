@@ -1,1 +1,1 @@
-fastapi dev main.py
+poetry run uvicorn main:app --reload
