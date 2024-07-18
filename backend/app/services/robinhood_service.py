@@ -15,13 +15,19 @@ load_dotenv()
 
 
 
-class CryptoAPITrading:
+class RobinhoodService:
     def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
         self.api_key = API_KEY
         private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
         # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
         self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
         self.base_url = "https://trading.robinhood.com"
+
+    def validate_account(self) -> bool | Exception:
+        try :
+            return self.get_holdings()
+        except Exception as e:
+            return False
 
     @staticmethod
     def _get_current_timestamp() -> int:
@@ -128,7 +134,7 @@ class CryptoAPITrading:
 
 
 def main():
-    api_trading_client = CryptoAPITrading()
+    api_trading_client = RobinhoodService()
     print(api_trading_client.get_account())
     print(api_trading_client.get_holdings())
 
