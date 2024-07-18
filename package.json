@@ -2,5 +2,8 @@
   "dependencies": {
     "base64-js": "^1.5.1",
     "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
   }
 }
