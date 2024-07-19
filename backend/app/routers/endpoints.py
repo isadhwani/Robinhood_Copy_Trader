@@ -12,12 +12,7 @@ provided_API_keys = False
 #API_KEY = ""
 #BASE64_PRIVATE_KEY = ""
 
-'''
-{
-  "API_KEY": "cae7ed39-1891-4e53-a48b-77650ff9da10",
-  "BASE64_PRIVATE_KEY": "pAYoVig5OHTc7uivfH9wj1zFK8RLw0SX1GovVKavIiNvB48OlNXc91CGFnQDJ8vQvT5A4QQtMHT8dX9uNeffpA=="
-}
-'''
+
 
 class Credentials(BaseModel):
     API_KEY: str
