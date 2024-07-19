@@ -11,7 +11,7 @@ app.include_router(endpoints.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Meow"}
 
 
 # app.include_router(router)
