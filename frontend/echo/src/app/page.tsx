@@ -36,17 +36,24 @@ export default function Home() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             { /* logo */ }
             <div className="flex flex-shrink-0 items-center">
-                { /* TODO: ADD BUTTON FUNCTIONALITY ON OTHER PAGES */ }
-                <img
+              { /* TODO: ADD BUTTON FUNCTIONALITY TO LINK BACK TO HOME PAGE */ }
+              <button
+                type="button"
+                className="flex flex-shrink-0 items-center"
+              >
+              <img
                   alt="ECHO"
                   src="https://cdn.discordapp.com/attachments/907803366908903464/1263650447961493534/ECHOLOGO_proto_A.png?ex=669b01b0&is=6699b030&hm=b5757ab689eaa06372ecb95a90ab87e69648fd6bcab4a7475fcd2633e67ea31a&"
                   className="h-8 w-auto"
                 />
+              <a href="#">
+                  </a>
+              </button>
             </div>
 
-            { /* for larger display -- TODO: figure out how to right align */ }
+            { /* for larger display */ }
             <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+              <div className="absolute right-0 flex space-x-4">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -87,7 +94,7 @@ export default function Home() {
       </DisclosurePanel>
     </Disclosure>
       
-      {/* Body - items-center TODO: blur background */ }
+      {/* Body - items-center TODO: MAKE IMAGE BACKGROUND AND BLUR */ }
 
       <div className="">
         <div className="mx-auto">
