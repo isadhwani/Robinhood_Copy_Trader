@@ -42,14 +42,15 @@ def add_credentials(credentials: Credentials,response: Response):
             #invalid format
             status_code=422, detail = f"Invalid base64 Private Key: {str(e)}"
         )
-    try:
-        holdings = robinhood_service.validate_account()
+    holdings = robinhood_service.validate_account()
+    if holdings:
         return {"message": "API Keys are valid", "crypto_holdings": holdings}
-    except Exception as e:
-        response.status_code=status.HTTP_401_UNAUTHORIZED
+    else:
+        response.status_code = status.HTTP_401_UNAUTHORIZED
         return HTTPException (
-            status_code=401, detail=f"Unable to find account with the given key: {str(e)}"
+            status_code=401, detail=f"Unable to find account with the provided keys."
         )
+
     
 
 
