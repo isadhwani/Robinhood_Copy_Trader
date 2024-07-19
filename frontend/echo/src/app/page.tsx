@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from "next/link";
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -36,19 +37,13 @@ export default function Home() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             { /* logo */ }
             <div className="flex flex-shrink-0 items-center">
-              { /* TODO: ADD BUTTON FUNCTIONALITY TO LINK BACK TO HOME PAGE */ }
-              <button
-                type="button"
-                className="flex flex-shrink-0 items-center"
-              >
-              <img
+              <Link href="/">
+                <img
                   alt="ECHO"
                   src="https://cdn.discordapp.com/attachments/907803366908903464/1263650447961493534/ECHOLOGO_proto_A.png?ex=669b01b0&is=6699b030&hm=b5757ab689eaa06372ecb95a90ab87e69648fd6bcab4a7475fcd2633e67ea31a&"
                   className="h-8 w-auto"
                 />
-              <a href="#">
-                  </a>
-              </button>
+              </Link>
             </div>
 
             { /* for larger display */ }
