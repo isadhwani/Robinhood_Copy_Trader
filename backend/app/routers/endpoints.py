@@ -3,14 +3,12 @@ from pydantic import BaseModel, validator
 import base64
 
 from app.services.robinhood_service import RobinhoodService
+import json
 
 router = APIRouter()
 
 provided_API_keys = False
 
-
-#API_KEY = ""
-#BASE64_PRIVATE_KEY = ""
 
 
 
@@ -45,8 +43,14 @@ def add_credentials(credentials: Credentials,response: Response):
         return HTTPException (
             status_code=401, detail=f"Unable to find account with the provided keys."
         )
-
     
+
+@router.get("/portfolios")
+def fetch_portfolios():
+    # Load data from JSON file
+    with open('profiles/profiles.json', 'r') as f:
+        data = json.load(f)
+    return data
 
 
 @router.post("/")
