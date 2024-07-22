@@ -18,6 +18,22 @@ load_dotenv()
 
 
 class RobinhoodService:
+
+    def __init__(self):
+        self.api_key = None
+        self.private_key = None
+        self.base_url = "https://trading.robinhood.com"
+
+    # def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
+    #     self.api_key = API_KEY
+    #     try:
+    #         private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
+    #     except Exception as e:
+    #         raise Exception ("Invalid private key") from e
+    #     # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
+    #     self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
+    #     self.base_url = "https://trading.robinhood.com"
+
     def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
         self.api_key = API_KEY
         try:
