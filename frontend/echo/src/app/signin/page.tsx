@@ -24,7 +24,7 @@ export default function Home() {
           
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-zinc-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="block h-6 w-6 group-data-[open]:hidden" />
@@ -53,7 +53,7 @@ export default function Home() {
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
                     className={classNames(
-                      item.current ? 'bg-slate-700 text-zinc-200' : 'text-zinc-400 hover:bg-zinc-400 hover:text-dark-theme',
+                      item.current ? 'bg-slate-700 text-slate-200' : 'text-slate-400 hover:bg-slate-400 hover:text-dark-theme',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     )}
                   >
@@ -76,7 +76,7 @@ export default function Home() {
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'bg-slate-700 text-zinc-200' : 'text-zinc-400 hover:bg-zinc-400 hover:text-dark-theme',
+                item.current ? 'bg-slate-700 text-slate-200' : 'text-slate-400 hover:bg-slate-400 hover:text-dark-theme',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >
@@ -97,7 +97,7 @@ export default function Home() {
               src="https://cdn.discordapp.com/attachments/907803366908903464/1264936068457959444/Mock_Logo_A.png?ex=669faf04&is=669e5d84&hm=893ddeb849ad9db85eac583ad31be87925df0752d8ae95d7136635fc6a132395&"
               className="mx-auto h-10 w-auto"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-zinc-300">
+            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-slate-300">
               Create an account
             </h2>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="#" method="POST" className="space-y-6">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-zinc-300">
+                <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-300">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -115,14 +115,14 @@ export default function Home() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-zinc-300">
+                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-slate-300">
                     Password
                   </label>
                 </div>
@@ -133,14 +133,14 @@ export default function Home() {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-zinc-300">
+                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-slate-300">
                     Please Re-Enter Your Password
                   </label>
                 </div>
@@ -151,7 +151,7 @@ export default function Home() {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
 
