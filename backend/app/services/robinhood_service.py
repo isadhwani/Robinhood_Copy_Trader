@@ -7,6 +7,7 @@ import uuid
 import requests
 from cryptography.hazmat.primitives.asymmetric import ed25519
 from dotenv import load_dotenv
+
 from pydantic import BaseModel, validator
 
 load_dotenv()
@@ -156,6 +157,12 @@ class RobinhoodService:
     def get_orders(self) -> Any:
         path = "/api/v1/crypto/trading/orders/"
         return self.make_api_request("GET", path)
+
+    def get_market_data(self, symbol: str) -> Any:
+        path = f'/api/v1/crypto/marketdata/best_bid_ask/?symbol={symbol.upper()}-USD'
+        return self.make_api_request("GET", path)
+
+
 
 
 def main():
