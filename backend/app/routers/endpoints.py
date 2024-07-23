@@ -27,7 +27,6 @@ print("running base code...")
 def add_credentials(credentials: Credentials, response: Response):
     try:
         robinhood_service = RobinhoodService(credentials.API_KEY, credentials.BASE64_PRIVATE_KEY)
-        print("ADDED USER!!!")
         # robinhood_service = RobinhoodService(credentials.API_KEY, credentials.BASE64_PRIVATE_KEY)
     except Exception as e:
         response.status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
@@ -62,6 +61,8 @@ def fetch_portfolios(user_id: int):
     print("user size: " + str(len(users.users)))
 
     user: User = users.get_user(0)
+    if user == None:
+        return {"message": "User not found"}
     return {"holdings": user.robinhood_service.get_holdings(), "user_id": user_id}
 
 
@@ -124,6 +125,8 @@ def execute_trade(execute_trade_request: ExecuteTradeRequest):
 @router.get("/orders")
 def orders():
     user: User = users.get_user(0)
+    if user == None:
+        return {"message": "User not found"}
     return {"orders": user.robinhood_service.get_orders()}
 
 
