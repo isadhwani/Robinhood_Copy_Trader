@@ -15,7 +15,7 @@ function classNames(...classes: string[]) {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col justify-between">
+    <main className="flex min-h-screen flex-col justify-between bg-dark-theme-2">
 
       {/* Navigation */}
       <Disclosure as="nav" className="bg-dark-theme">

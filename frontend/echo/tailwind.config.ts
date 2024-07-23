@@ -15,6 +15,8 @@ const config: Config = {
       },
       colors: {
         'dark-theme': '#0D0735',
+        'dark-theme-2': '#0D0735',
+        'white': '#F5F5FA',
       },
     },
 
