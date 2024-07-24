@@ -13,10 +13,6 @@ const navigation = [
   { name: 'Dashboard', href: '/user_dashboard', current: true }
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col justify-between bg-dark-theme-2">

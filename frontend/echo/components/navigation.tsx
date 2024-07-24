@@ -6,10 +6,10 @@ import Image from "next/image";
 import React from 'react';
 import Link from 'next/link';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 // import logo from '@/images/mockLogo.png';
 
-function classNames(...classes: string[]): string {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -21,11 +21,11 @@ const Navigation = ({currentPath}) => {
   return (
     <Disclosure as="nav" className="bg-dark-theme">
 
-    {({ open }) => (
-        <>      
+      {({ open }) => (
+        <> 
+
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
               <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -89,9 +89,11 @@ const Navigation = ({currentPath}) => {
             ))}
           </div>
         </DisclosurePanel>
+        
         </>
       )}
-  </Disclosure>
+
+    </Disclosure>
   );
 };
 

@@ -14,10 +14,6 @@ const navigation = [
   { name: 'Sign Up', href: '/signin', current: false },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col justify-between">
