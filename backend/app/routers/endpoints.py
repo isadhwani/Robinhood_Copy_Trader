@@ -60,7 +60,7 @@ def fetch_portfolios():
 def fetch_portfolios(user_id: int):
     print("user size: " + str(len(users.users)))
 
-    user: User = users.get_user(0)
+    user: User = users.get_user(user_id)
     if user == None:
         return {"message": "User not found"}
     return {"holdings": user.robinhood_service.get_holdings(), "user_id": user_id}
