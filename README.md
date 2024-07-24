@@ -1,4 +1,10 @@
 Project Echo
 --
+Created by Isaac, Andrew, Julia, Salma, and Alyssa
 
-Allowing non-crypto native users to access and imitate the trades of well-known crypto traders via Robinhood
+Robhinhood Copytrader for Cryptocurrencies
+
+Frontend running instructions:
+- use folder frontend/echo
+- npm install
+- npm run dev
