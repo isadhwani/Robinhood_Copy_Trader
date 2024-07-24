@@ -23,7 +23,11 @@ class Users:
         return self.last_id - 1
 
     def get_user(self, user_id):
-        return self.users[user_id]
+        try :
+            user = self.users[user_id]
+            return user
+        except KeyError:
+            return None
 
     def remove_user(self, user_id):
         del self.users[user_id]
