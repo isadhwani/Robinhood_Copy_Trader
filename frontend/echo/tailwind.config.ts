@@ -14,13 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        // other colors used: tailwind slate and indigo palettes
+        // other colors used: tailwind slate
         'dark-theme': '#0D0735',
         'dark-theme-2': '#121C40', // blue-950
         'white': '#F5F5FA',
-        'purple-600': '#f4d8aa',
-        'purple-500': '#a941e6',
-        'purple-700': '#8219c0'
+        'accent-light': '#836bbf',
+        'accent-dark': '#5D59AF'
       },
     },
 
