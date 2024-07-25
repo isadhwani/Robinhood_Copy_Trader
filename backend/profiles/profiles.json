@@ -1,48 +1,74 @@
 {
-  "profiles": [
+  "portfolios": [
     {
-      "profile_id": 0,
-      "name": "Elon Musk",
-      "type": "individual",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_Prime_Minister%2C_Shri_Narendra_Modi_meeting_Mr._Elon_Musk_in_New_York%2C_USA_on_June_20%2C_2023_%282%29_%28cropped%29.jpg",
-      "holdings": {
+      "portfolio_id": 0,
+      "data": {
+        "name": "Elon Musk",
+        "type": "individual",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_Prime_Minister%2C_Shri_Narendra_Modi_meeting_Mr._Elon_Musk_in_New_York%2C_USA_on_June_20%2C_2023_%282%29_%28cropped%29.jpg",
+        "holdings": {
+        },
+        "percentages": {
+          "ETH": 0.30,
+          "DOGE": 0.10,
+          "BTC": 0.60
+        }
+      }
+    },
+    {
+      "portfolio_id": 1,
+      "data": {
+        "name": "Vitalik",
+        "type": "individual",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg",
+        "holdings": {
+          "ETH": 278178,
+          "USDC": 18748724,
+          "DOGE": 92066,
+          "BNB": 6.96
+        },
+        "percentages": {
+          "ETH": 0.95,
+          "USDC": 0.2,
+          "DOGE": 0.1,
+          "BNB": 0.1
+        }
+      }
+    },
+    {
+      "portfolio_id": 2,
+      "data": {
+        "name": "Michael J. Saylor",
+        "type": "individual",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Michael_Saylor_2022.png",
+        "holdings": {
+          "BTC": 129000
+        },
+        "percentages": {
+          "BTC": 1
+        }
+      }
+    },
+    {
+      "portfolio_id": 3,
+      "data": {
+        "name": "Balanced",
+        "type": "algorithm",
+        "image": "https://sarsonfunds.com/building-a-balanced-10000-crypto-portfolio-in-2024/",
+        "holdings": {
+          "BTC": 0.031,
+          "ETH": 0.59,
+          "SOL": 9.540467482906651,
+          "LINK": 111.52416356877325,
+          "UNI": 194.06171162429652
+        },
+        "percentages": {
+          "BTC": 0.4,
+          "ETH": 0.3,
+          "LINK": 0.15,
+          "UNI": 0.15
+        }
       },
-      "percentages": {
-        "ETH": 30,
-        "DOGE": 10,
-        "BTC": 60
-      }
-    },
-    {
-      "profile_id": 1,
-      "name": "Vitalik",
-      "type": "individual",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg",
-      "holdings": {
-        "ETH": 278178,
-        "USDC": 18748724,
-        "DOGE": 92066,
-        "BNB": 6.96
-      },
-      "percentages" : {
-        "ETH": 95,
-        "USDC": 2,
-        "DOGE": 0.1,
-        "BNB": 0.1
-      }
-
-    },
-    {
-      "profile_id": 2,
-      "name": "Michael J. Saylor",
-      "type": "individual",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Michael_Saylor_2022.png",
-      "holdings": {
-        "BTC": 129000
-      }
-    },
-    {
-      "profile_id": 3,
       "name": "Balanced",
       "type": "algorithm",
       "image": "https://sarsonfunds.com/building-a-balanced-10000-crypto-portfolio-in-2024/",
@@ -54,30 +80,31 @@
         "UNI": 194.06171162429652
       },
       "percentages": {
-        "BTC": 20,
-        "ETH": 20,
-        "SOL": 15,
-        "LINK": 15,
-        "UNI": 15
+        "BTC": 0.25,
+        "ETH": 0.25,
+        "LINK": 0.15,
+        "UNI": 0.15
       }
     },
     {
-      "profile_id": 4,
-      "name": "Aggressive",
-      "type": "algorithm",
-      "image": "",
-      "holdings": {
-      },
-      "percentages": {
-        "BTC": 15,
-        "ETH": 15,
-        "SOL": 15,
-        "LINK": 15,
-        "UNI": 10,
-        "BNB": 10,
-        "AVAX": 10,
-        "DOGE": 5,
-        "SHIB": 5
+      "portfolio_id": 4,
+      "data": {
+        "name": "Aggressive",
+        "type": "algorithm",
+        "image": "",
+        "holdings": {
+        },
+        "percentages": {
+          "BTC": 15,
+          "ETH": 15,
+          "SOL": 15,
+          "LINK": 15,
+          "UNI": 10,
+          "BNB": 10,
+          "AVAX": 10,
+          "DOGE": 5,
+          "SHIB": 5
+        }
       }
     }
   ]
