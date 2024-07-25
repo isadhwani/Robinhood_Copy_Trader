@@ -12,14 +12,14 @@ router = APIRouter()
 users = Users()
 
 provided_API_keys = False
-print("running base code...")
+#print("running base code...")
 
 @router.post("/add-credentials", status_code=200)
 def add_credentials(credentials: Credentials, response: Response):
     try:
 
         robinhood_service = RobinhoodService(credentials.API_KEY, credentials.BASE64_PRIVATE_KEY)
-        print("ADDED USER!!!")
+        #print("ADDED USER!!!")
         # robinhood_service = RobinhoodService(credentials.API_KEY, credentials.BASE64_PRIVATE_KEY)
     except Exception as e:
         response.status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
@@ -34,7 +34,7 @@ def add_credentials(credentials: Credentials, response: Response):
         return {"message": "API Keys are valid", "user_id": user_id, "holdings": holdings}
     else:
         robinhood_service = None
-        print("1. is robinhood service none? " + str(robinhood_service == None))
+        #print("1. is robinhood service none? " + str(robinhood_service == None))
         response.status_code = status.HTTP_401_UNAUTHORIZED
         return HTTPException (
             status_code=401, detail=f"Unable to find account with the provided keys."
@@ -51,7 +51,7 @@ def fetch_portfolios():
 
 @router.get("/holdings")
 def fetch_portfolios(user_id: int):
-    print("user size: " + str(len(users.users)))
+    #print("user size: " + str(len(users.users)))
 
     user : User = users.get_user(0)
     return {"holdings" : user.robinhood_service.get_holdings(), "user_id": user_id}
