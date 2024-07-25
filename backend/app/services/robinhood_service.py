@@ -7,6 +7,9 @@ import uuid
 import requests
 from cryptography.hazmat.primitives.asymmetric import ed25519
 from dotenv import load_dotenv
+
+from pydantic import BaseModel, validator
+
 load_dotenv()
 
 
@@ -16,18 +19,41 @@ load_dotenv()
 
 
 class RobinhoodService:
+
+    def __init__(self):
+        self.api_key = None
+        self.private_key = None
+        self.base_url = "https://trading.robinhood.com"
+
+    # def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
+    #     self.api_key = API_KEY
+    #     try:
+    #         private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
+    #     except Exception as e:
+    #         raise Exception ("Invalid private key") from e
+    #     # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
+    #     self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
+    #     self.base_url = "https://trading.robinhood.com"
+
     def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
         self.api_key = API_KEY
-        private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
+        try:
+            private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
+        except Exception as e:
+            raise Exception ("Invalid private key") from e
         # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
         self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
         self.base_url = "https://trading.robinhood.com"
 
+    
     def validate_account(self) -> bool | Exception:
-        try :
-            return self.get_holdings()
+        try:
+            holdings = self.get_holdings()
+            #if not holdings:
+            #    return {"message": "No holdings found for this account."}
         except Exception as e:
-            return False
+            return {"message": f"Error validating account: {str(e)}"}
+        return holdings
 
     @staticmethod
     def _get_current_timestamp() -> int:
@@ -131,6 +157,12 @@ class RobinhoodService:
     def get_orders(self) -> Any:
         path = "/api/v1/crypto/trading/orders/"
         return self.make_api_request("GET", path)
+
+    def get_market_data(self, symbol: str) -> Any:
+        path = f'/api/v1/crypto/marketdata/best_bid_ask/?symbol={symbol.upper()}-USD'
+        return self.make_api_request("GET", path)
+
+
 
 
 def main():
