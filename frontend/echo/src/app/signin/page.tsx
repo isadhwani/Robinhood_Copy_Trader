@@ -28,8 +28,8 @@ export default function Home() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               alt="Echo"
-              src="https://cdn.discordapp.com/attachments/907803366908903464/1264936068457959444/Mock_Logo_A.png?ex=669faf04&is=669e5d84&hm=893ddeb849ad9db85eac583ad31be87925df0752d8ae95d7136635fc6a132395&"
-              className="mx-auto h-10 w-auto"
+              src="https://gcdnb.pbrd.co/images/74MbLqKX2pSi.png?o=1"
+              className="mx-auto h-15 w-auto"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-slate-300">
               Create an account

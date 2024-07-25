@@ -9,7 +9,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 // import logo from '@/images/mockLogo.png';
 
-function classNames(...classes) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -39,13 +39,15 @@ const Navigation = ({currentPath}) => {
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               { /* logo */ }
               <div className="flex flex-shrink-0 items-center">
-                <Link href="/">
-                <img
+              <Link href="/">
+                    <Image
                       alt="ECHO"
-                      src="https://cdn.discordapp.com/attachments/907803366908903464/1263650447961493534/ECHOLOGO_proto_A.png?ex=669b01b0&is=6699b030&hm=b5757ab689eaa06372ecb95a90ab87e69648fd6bcab4a7475fcd2633e67ea31a&"
+                      src="https://gcdnb.pbrd.co/images/74MbLqKX2pSi.png?o=1"
+                      width={32}  // Specify the width of the image
+                      height={32} // Specify the height of the image
                       className="h-8 w-auto"
                     />
-                </Link>
+                  </Link>
               </div>
 
               { /* for larger display */ }
