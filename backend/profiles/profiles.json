@@ -79,6 +79,94 @@
         "DOGE": 5,
         "SHIB": 5
       }
+    },
+    {
+      "profile_id": 5,
+      "name": "Snoop Dogg",
+      "type": "individual",
+      "image": "https://media.pitchfork.com/photos/62043c007db00b3b97548cb5/1:1/w_1000,h_1000,c_limit/Snoop%20Dogg.jpg",
+      "wallet_ids": {
+        "ETH" :  ["0xce90a7949bb78892f159f428d0dc23a8e3584d75", "0xe0036fb4b5a3b232acfc01fec3bd1d787a93da75"]
+      },
+      "holdings": {
+        "ETH": 5612.72,
+        "WETH": 7290.57,
+        "BLUR": 297.37,
+        "LIT": 530.65,
+        "TOKEN": 20.88,
+        "M87": 6.59
+      },
+      "percentages": {
+        "ETH": 40.745,
+        "WETH": 52.925,
+        "BLUR": 2.159,
+        "LIT": 3.852,
+        "TOKEN": 0.152,
+        "M87": 0.048
+      }
+    },
+    {
+      "profile_id": 6,
+      "name": "Zach Hyman",
+      "type": "individual",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hyman_beniers_10_2_%2853231247097%29_%28cropped%29_%28a%29.jpg",
+      "wallet_ids": {
+        "ETH": ["0x991091d5596484f3153ac8707c76ec79f6d353ed"]
+      },
+      "holdings": {
+        "PEPE": 1760000,
+        "ETH": 1040000
+      },
+      "percentages": {
+        "PEPE": 62.633,
+        "ETH": 37.012
+      }
+    },
+    {
+      "profile_id": 7,
+      "name": "DJ Marshmello",
+      "type": "individual",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hyman_beniers_10_2_%2853231247097%29_%28cropped%29_%28a%29.jpg",
+      "wallet_ids": {
+        "ETH": ["0xa0eaf6b0df87132c9a28e450a43c1d906defb60b"]
+      },
+      "holdings": {
+        "ETH": 2792.80,
+        "BOBA": 454.03,
+        "AAVE": 147.22,
+        "LINK": 25.49
+      },
+      "percentages": {
+        "ETH": 81.450,
+        "BOBA": 13.241,
+        "AAVE": 4.294,
+        "LINK": 0.714
+      }
+    },
+    {
+      "profile_id": 8,
+      "name": "Hayden Adams",
+      "type": "individual",
+      "image": "https://imageio.forbes.com/specials-images/imageserve/636d45378c6de56f54a74abe/0x0.jpg?format=jpg&crop=1623,1623,x171,y149,safe&height=416&width=416&fit=bounds",
+      "wallet_ids": {
+        "ETH": ["0x11E4857Bb9993a50c685A79AFad4E6F65D518DDa"]
+      },
+      "holdings": {
+        "ETH": 1378.60,
+        "USDT": 3412.63,
+        "USDC": 1295.25,
+        "DAI": 605.04,
+        "WETH": 547.78,
+        "SOCKS": 447.70
+      },
+      "percentages": {
+        "ETH": 17.2607,
+        "USDT": 42.728,
+        "USDC": 16.217,
+        "DAI": 7.575,
+        "WETH": 6.858,
+        "SOCKS": 5.605
+      }
     }
   ]
 }
