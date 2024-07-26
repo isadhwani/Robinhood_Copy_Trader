@@ -8,6 +8,10 @@ from starlette.middleware.cors import CORSMiddleware
 # from routers.endpoints import router
 from app.routers import endpoints
 
+app = FastAPI()
+
+
+
 print("Running main.py")
 app = FastAPI()
 app.include_router(endpoints.router)
