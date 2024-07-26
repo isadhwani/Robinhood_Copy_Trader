@@ -108,7 +108,7 @@
       }
     },
     {
-      "profile_id": 5,
+      "portfolio_id": 5,
       "name": "Snoop Dogg",
       "type": "individual",
       "image": "https://media.pitchfork.com/photos/62043c007db00b3b97548cb5/1:1/w_1000,h_1000,c_limit/Snoop%20Dogg.jpg",
@@ -133,7 +133,7 @@
       }
     },
     {
-      "profile_id": 6,
+      "portfolio_id": 6,
       "name": "Zach Hyman",
       "type": "individual",
       "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hyman_beniers_10_2_%2853231247097%29_%28cropped%29_%28a%29.jpg",
@@ -150,7 +150,7 @@
       }
     },
     {
-      "profile_id": 7,
+      "portfolio_id": 7,
       "name": "DJ Marshmello",
       "type": "individual",
       "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hyman_beniers_10_2_%2853231247097%29_%28cropped%29_%28a%29.jpg",
@@ -171,7 +171,7 @@
       }
     },
     {
-      "profile_id": 8,
+      "portfolio_id": 8,
       "name": "Hayden Adams",
       "type": "individual",
       "image": "https://imageio.forbes.com/specials-images/imageserve/636d45378c6de56f54a74abe/0x0.jpg?format=jpg&crop=1623,1623,x171,y149,safe&height=416&width=416&fit=bounds",
