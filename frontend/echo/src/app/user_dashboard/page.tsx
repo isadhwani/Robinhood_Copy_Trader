@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import Navigation from '@/components/navigation';
 import {useState} from 'react';
-import Carousel from '../testCarousel/page';
+import Carousel from '@/components/carousel';
 
 { /* Navigation Tabs */ }
 const navigation = [
