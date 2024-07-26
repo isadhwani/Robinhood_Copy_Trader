@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import Navigation from '@/components/navigation';
 import {useState} from 'react';
+import Carousel from '../testCarousel/page';
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -54,6 +55,8 @@ export default function Home() {
       */}
         <div className="p-24 text-white">  
           <h1 className="text-2xl mb-4">User Dashboard</h1>
+
+          <Carousel />
         
           <button 
             onClick={fetchCopyAccounts}
