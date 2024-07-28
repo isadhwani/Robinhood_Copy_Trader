@@ -135,6 +135,11 @@ def read_root():
     return {"Hello": "World"}
 
 
-def round_down(value, decimals):
-    factor = 1 / (10 ** decimals)
-    return (value // factor) * factor
+def round_down(number, decimal_places):
+    str_num=f"{number:.8f}"
+    if '.' in str_num:
+        integer_part, decimal_part = str_num.split('.')
+        truncated_decimal = decimal_part[:decimal_places]
+        return float(f"{integer_part}.{truncated_decimal}")
+    else:
+        return float(str_num)
