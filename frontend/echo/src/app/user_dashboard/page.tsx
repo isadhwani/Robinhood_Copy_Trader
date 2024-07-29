@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import React from 'react';
 import Navigation from '@/components/navigation';
-import {useState} from 'react';
+import { useState } from 'react';
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -21,6 +21,7 @@ export default function Home() {
   const [error, setError] = useState('');
   const [selectedProfileId, setSelectedProfileId] = useState('');
   const [tradeAmount, setTradeAmount] = useState('');
+  const [purchaseMessages, setPurchaseMessages] = useState<string[]>([]);
 
   const fetchCopyAccounts = async () => {
     try {
@@ -32,7 +33,7 @@ export default function Home() {
       const data = await response.json();
       setCopyAccounts(data);
     }
-    catch(error){
+    catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -43,7 +44,7 @@ export default function Home() {
 
   const fetchUserHoldings = async () => {
     try {
-      const userId = localStorage.getItem('user_id'); 
+      const userId = localStorage.getItem('user_id');
       if (!userId) {
         throw new Error('User ID not found. Please log in again.');
       }
@@ -68,7 +69,7 @@ export default function Home() {
       console.log('User ID:', userId);
       console.log('Account to copy:', selectedProfileId);
       console.log('Funds:', tradeAmount);
-      
+
       const response = await fetch('api/execute-trade', {
         method: 'POST',
         headers: {
@@ -85,6 +86,8 @@ export default function Home() {
       }
       const data = await response.json();
       alert('Trade executed successfully!');
+      setPurchaseMessages(data.purchase_messages || []);
+      console.log(purchaseMessages);
       fetchUserHoldings();
     }
     catch (error) {
@@ -96,8 +99,8 @@ export default function Home() {
     <main className="flex min-h-screen flex-col justify-between bg-dark-theme-2">
 
       {/* Navigation */}
-      <Navigation currentPath={navigation}/>
-      {/* Body */ }
+      <Navigation currentPath={navigation} />
+      {/* Body */}
       {/*}
 
       <div className="">  
@@ -106,11 +109,11 @@ export default function Home() {
         </div>
       </div>
       */}
-        <div className="p-24 text-white">  
-          <h1 className="text-2xl mb-4">User Dashboard</h1>
+      <div className="p-24 text-white">
+        <h1 className="text-2xl mb-4">User Dashboard</h1>
 
 
-<form onSubmit={executeTrade} className="mb-8">
+        <form onSubmit={executeTrade} className="mb-8">
           <h2 className="text-xl mb-2">Execute Trade</h2>
           <div className="mb-4">
             <label htmlFor="profileId" className="block mb-2">Account ID to Copy:</label>
@@ -137,49 +140,60 @@ export default function Home() {
           <button type="submit" className="bg-yellow-500 text-white p-2 rounded">
             Execute Trade
           </button>
+
+          {purchaseMessages.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-xl mb-2">Purchase Details:</h3>
+              <ul className="list-disc pl-5">
+                {purchaseMessages.map((message, index) => (
+                  <li key={index}>{message}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </form>
 
 
 
-        
-          <button 
-            onClick={fetchCopyAccounts}
-            className="bg-blue-500 text-white p-2 rounded mb-4"
-          >
-            Fetch Accounts to Copy
-          </button>
 
-          <button 
-            onClick={fetchUserHoldings}
+        <button
+          onClick={fetchCopyAccounts}
+          className="bg-blue-500 text-white p-2 rounded mb-4"
+        >
+          Fetch Accounts to Copy
+        </button>
+
+        <button
+          onClick={fetchUserHoldings}
           className="bg-green-500 text-white p-2 rounded mb-4"
-          >
-            View My Holdings
-          </button>
+        >
+          View My Holdings
+        </button>
 
-          {error && <p className="text-red-500 mb-4">{error}</p>}
-        
-          {userHoldings && (
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+
+        {userHoldings && (
           <div>
             <h2 className="text-xl mb-2">Your Holdings:</h2>
             <pre className="bg-gray-800 p-4 rounded overflow-auto">
               {JSON.stringify(userHoldings, null, 2)}
             </pre>
           </div>
-          )}
+        )}
 
-          {accounts && (
-            <div>
-              <h2 className="text-xl mb-2">Accounts:</h2>
-              <pre className="bg-gray-800 p-4 rounded overflow-auto">
-                {JSON.stringify(accounts, null, 2)}
-              </pre>
-            </div>
-          )}
-
-
+        {accounts && (
+          <div>
+            <h2 className="text-xl mb-2">Accounts:</h2>
+            <pre className="bg-gray-800 p-4 rounded overflow-auto">
+              {JSON.stringify(accounts, null, 2)}
+            </pre>
+          </div>
+        )}
 
 
-        </div>
+
+
+      </div>
     </main>
   );
 }
