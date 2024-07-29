@@ -23,7 +23,7 @@ const navigation = [
 
 export default function Home() {
   const [accounts, setCopyAccounts] = useState<Portfolio[]>([]);
-  const [userHoldings, setUserHoldings] = useState(null);
+  const [userHoldings, setUserHoldings] = useState<any[]>([]);
   const [error, setError] = useState('');
   const [selectedProfileId, setSelectedProfileId] = useState('');
   const [tradeAmount, setTradeAmount] = useState('');
@@ -76,10 +76,16 @@ export default function Home() {
         throw new Error('Failed to fetch user holdings');
       }
       const data = await response.json();
-      setUserHoldings(data.holdings);
+      setUserHoldings(data.holdings.results);
     } catch (error) {
       setError(error instanceof Error ? error.message : String(error));
     }
+  };
+
+  const renderHoldings = (holdings) => {
+    return (
+      <p><strong>{holdings.asset_code}</strong>: {holdings.total_quantity}</p>
+    );
   };
 
   const executeTrade = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -209,11 +215,9 @@ export default function Home() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {userHoldings && (
-          <div>
+          <div className="bg-slate-800 p-4 rounded mb-4">
             <h2 className="text-xl mb-2">Your Holdings:</h2>
-            <pre className="bg-gray-800 p-4 rounded overflow-auto">
-              {JSON.stringify(userHoldings, null, 2)}
-            </pre>
+            {userHoldings.map(renderHoldings)}
           </div>
         )}
 
