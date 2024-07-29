@@ -1,4 +1,4 @@
-// Sign In Page
+// User Dashboard
 
 'use client';
 
@@ -26,7 +26,7 @@ export default function Home() {
 
   const fetchCopyAccounts = async () => {
     try {
-      //TODO: change if we get a domain
+      // TODO: change if we get a domain
       const response = await fetch('api/copy-profiles');
       if (!response.ok) {
         throw new Error('Failed to fetch accounts');
@@ -44,8 +44,8 @@ export default function Home() {
       }
 
       setCopyAccounts(accountsArray);
-    }
-    catch (error) {
+
+    } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -107,7 +107,6 @@ export default function Home() {
     }
   };
 
-
   const renderPortfolio = (portfolios) => {
     return (
       <div key={portfolios.portfolio_id} className="bg-gray-800 p-4 rounded mb-4">
@@ -121,13 +120,11 @@ export default function Home() {
   };
 
 
-
-
   return (
     <main className="flex min-h-screen flex-col justify-between bg-dark-theme-2">
-
       {/* Navigation */}
       <Navigation currentPath={navigation} />
+
       {/* Body */}
       {/*}
 

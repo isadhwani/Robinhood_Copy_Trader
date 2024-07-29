@@ -1,4 +1,4 @@
-// EDIT THIS PAGE, Home Page
+// DO NOT TOUCH -- EDITING WILL BREAK NAV BAR
 
 'use client'
 
