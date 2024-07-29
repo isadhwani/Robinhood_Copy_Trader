@@ -18,7 +18,7 @@ const navigation = [
 
 export default function Home() {
   const [accounts, setCopyAccounts] = useState<any[]>([]);
-  const [userHoldings, setUserHoldings] = useState(null);
+  const [userHoldings, setUserHoldings] = useState<any[]>([]);
   const [error, setError] = useState('');
   const [selectedProfileId, setSelectedProfileId] = useState('');
   const [tradeAmount, setTradeAmount] = useState('');
@@ -65,7 +65,8 @@ export default function Home() {
         throw new Error('Failed to fetch user holdings');
       }
       const data = await response.json();
-      setUserHoldings(data.holdings);
+      setUserHoldings(data.holdings.results);
+
     } catch (error) {
       setError(error instanceof Error ? error.message : String(error));
     }
@@ -109,13 +110,19 @@ export default function Home() {
 
   const renderPortfolio = (portfolios) => {
     return (
-      <div key={portfolios.portfolio_id} className="bg-gray-800 p-4 rounded mb-4">
+      <div key={portfolios.portfolio_id} className="bg-slate-800 p-4 rounded mb-4">
         <p><strong>ID:</strong> {portfolios.portfolio_id}</p>
         <p><strong>Name:</strong> {portfolios.data.name}</p>
         <p><strong>Account Type:</strong> {portfolios.data.type}</p>
         <img src={portfolios.data.image} alt={portfolios.data.name} className="rounded-full w-36 h-36 object-cover mx-auto" />
         <p><strong>Percentages:</strong> {JSON.stringify(portfolios.data.percentages)}</p>
       </div>
+    );
+  };
+
+  const renderHoldings = (holdings) => {
+    return (
+        <p><strong>{holdings.asset_code}</strong>: {holdings.total_quantity}</p>
     );
   };
 
@@ -126,14 +133,7 @@ export default function Home() {
       <Navigation currentPath={navigation} />
 
       {/* Body */}
-      {/*}
 
-      <div className="">  
-        <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left p-24 text-white">
-          This is our User Dashboard
-        </div>
-      </div>
-      */}
       <div className="p-24 text-white">
         <h1 className="text-2xl mb-4">User Dashboard</h1>
 
@@ -178,9 +178,6 @@ export default function Home() {
           )}
         </form>
 
-
-
-
         <button
           onClick={fetchCopyAccounts}
           className="bg-blue-500 text-white p-2 rounded mb-4"
@@ -198,33 +195,20 @@ export default function Home() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {userHoldings && (
-          <div>
+          <div className="bg-slate-800 p-4 rounded mb-4">
             <h2 className="text-xl mb-2">Your Holdings:</h2>
-            <pre className="bg-gray-800 p-4 rounded overflow-auto">
-              {JSON.stringify(userHoldings, null, 2)}
-            </pre>
+            {userHoldings.map(renderHoldings)}
           </div>
         )}
 
         <Carousel />
 
-        {/*
-        {accounts && (
+        {accounts.length > 0 && (
           <div>
             <h2 className="text-xl mb-2">Accounts:</h2>
-            <pre className="bg-gray-800 p-4 rounded overflow-auto">
-              {JSON.stringify(accounts, null, 2)}
-            </pre>
+            {accounts.map(renderPortfolio)}
           </div>
         )}
-          */}
-
-          {accounts.length > 0 && (
-            <div>
-              <h2 className="text-xl mb-2">Accounts:</h2>
-              {accounts.map(renderPortfolio)}
-            </div>
-          )}
 
       </div>
     </main>
