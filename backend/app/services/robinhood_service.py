@@ -7,6 +7,7 @@ import uuid
 import requests
 from cryptography.hazmat.primitives.asymmetric import ed25519
 from dotenv import load_dotenv
+from backend.app.services.security.secureconfig import SecureConfig
 
 from pydantic import BaseModel, validator
 
