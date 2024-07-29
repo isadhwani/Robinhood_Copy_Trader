@@ -87,6 +87,7 @@ def execute_trade(execute_trade_request: ExecuteTradeRequest):
         return {"message": "User not found"}
 
     orders = []
+    purchase_messages = []
     for coin in portfolio['percentages']:
         market_data_resp = user.robinhood_service.get_market_data(coin)
         # print(json.dumps(market_data_resp, indent=2))
@@ -95,7 +96,7 @@ def execute_trade(execute_trade_request: ExecuteTradeRequest):
         est_coin_value = float(portfolio['percentages'][coin] * execute_trade_request.funds)
         est_tokens = est_coin_value / market_price
 
-
+     
 
         # print("coin: " + coin)
         # print("percentage: " + str(portfolio['percentages'][coin]))
@@ -107,7 +108,12 @@ def execute_trade(execute_trade_request: ExecuteTradeRequest):
         rounded_est_price = rounded_est_tokens * market_price
 
 
-        print(f"buying {rounded_est_tokens} {coin} at ${market_price} for {rounded_est_price}")
+        message = f"buying {rounded_est_tokens} {coin} at ${market_price} for {rounded_est_price}"
+
+        print(message)
+
+        purchase_messages.append(message)
+       
 
         order = user.robinhood_service.place_order(
             str(uuid.uuid4()),
@@ -120,7 +126,7 @@ def execute_trade(execute_trade_request: ExecuteTradeRequest):
 
         # print("Price: " + str(order['price']))
 
-    return {"message": "Trade executed", "portfolio": portfolio, "orders": orders}
+    return {"message": "Trade executed", "portfolio": portfolio, "orders": orders, "purchase_messages": purchase_messages}
 
 @router.get("/orders")
 def orders():
@@ -135,6 +141,11 @@ def read_root():
     return {"Hello": "World"}
 
 
-def round_down(value, decimals):
-    factor = 1 / (10 ** decimals)
-    return (value // factor) * factor
+def round_down(number, decimal_places):
+    str_num=f"{number:.8f}"
+    if '.' in str_num:
+        integer_part, decimal_part = str_num.split('.')
+        truncated_decimal = decimal_part[:decimal_places]
+        return float(f"{integer_part}.{truncated_decimal}")
+    else:
+        return float(str_num)
