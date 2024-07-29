@@ -47,14 +47,30 @@ class RobinhoodService:
     #     self.base_url = "https://trading.robinhood.com"
 
     def __init__(self, API_KEY: str, BASE64_PRIVATE_KEY: str):
-        self.api_key = API_KEY
-        try:
-            private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
-        except Exception as e:
-            raise Exception ("Invalid private key") from e
-        # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
-        self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
+        # self.api_key = API_KEY
+        # try:
+        #     private_bytes = base64.b64decode(BASE64_PRIVATE_KEY)
+        # except Exception as e:
+        #     raise Exception ("Invalid private key") from e
+        # # Note that the cryptography library used here only accepts a 32 byte ed25519 private key
+        # self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
+        # self.base_url = "https://trading.robinhood.com"
+
+        self.config = SecureConfig()
+        self.encrypted_api_key = self.config.encrypt(API_KEY)
+        self.encrypted_private_key = self.config.encrypt(BASE64_PRIVATE_KEY)
         self.base_url = "https://trading.robinhood.com"
+        self.private_key = None
+
+    def _get_api_key(self) -> str:
+        return self.config.decrypt(self.encrypted_api_key)
+
+    def _get_private_key(self) -> ed25519.Ed25519PrivateKey:
+        if self.private_key is None:
+            decrypted_private_key = self.config.decrypt(self.encrypted_private_key)
+            private_bytes = base64.b64decode(decrypted_private_key)
+            self.private_key = ed25519.Ed25519PrivateKey.from_private_bytes(private_bytes[:32])
+        return self.private_key
 
     
     def validate_account(self) -> bool | Exception:
@@ -98,11 +114,23 @@ class RobinhoodService:
             return None
 
     def get_authorization_header(self, method: str, path: str, body: str, timestamp: int) -> Dict[str, str]:
-        message_to_sign = f"{self.api_key}{timestamp}{path}{method}{body}"
-        signature = self.private_key.sign(message_to_sign.encode("utf-8"))
+        # message_to_sign = f"{self.api_key}{timestamp}{path}{method}{body}"
+        # signature = self.private_key.sign(message_to_sign.encode("utf-8"))
+
+        # return {
+        #     "x-api-key": self.api_key,
+        #     "x-signature": base64.b64encode(signature).decode("utf-8"),
+        #     "x-timestamp": str(timestamp),
+        # }
+
+        api_key = self._get_api_key()
+        private_key = self._get_private_key()
+
+        message_to_sign = f"{api_key}{timestamp}{path}{method}{body}"
+        signature = private_key.sign(message_to_sign.encode("utf-8"))
 
         return {
-            "x-api-key": self.api_key,
+            "x-api-key": api_key,
             "x-signature": base64.b64encode(signature).decode("utf-8"),
             "x-timestamp": str(timestamp),
         }
