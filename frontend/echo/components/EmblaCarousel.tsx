@@ -14,20 +14,23 @@ import {
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
 
+import { Portfolio } from '@/types/types'
+import Profile from './Profile'
+
 const TWEEN_FACTOR_BASE = 0.84
 
 const numberWithinRange = (number: number, min: number, max: number): number =>
   Math.min(Math.max(number, min), max)
 
 type PropType = {
-  slides: number[]
-  options?: EmblaOptionsType
+  portfolios: Portfolio[]
+  options?: EmblaOptionsType;
 }
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props
+  const { portfolios, options } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: false, delay: 3000 })
+    Autoplay({ playOnInit: true, delay: 2000 })
   ])
   const tweenFactor = useRef(0)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -132,13 +135,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
-              <img
-                className="embla__slide__img"
-                src={`https://picsum.photos/600/350?v=${index}`}
-                alt="Your alt text"
-              />
+          {portfolios.map((portfolio) => (
+            <div className="embla__slide" key={portfolio.portfolio_id}>
+              <Profile profile={portfolio} />
             </div>
           ))}
         </div>

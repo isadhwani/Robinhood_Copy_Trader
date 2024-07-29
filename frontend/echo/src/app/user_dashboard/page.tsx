@@ -7,9 +7,14 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
 
 import React from 'react';
+
+
 import Navigation from '@/components/navigation';
 import { useState } from 'react';
 import Carousel from '@/components/carousel';
+import { useEffect } from 'react';
+
+import { Portfolio, PortfoliosData } from '@/types/types';
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -17,24 +22,29 @@ const navigation = [
 ]
 
 export default function Home() {
-  const [accounts, setCopyAccounts] = useState<any[]>([]);
+  const [accounts, setCopyAccounts] = useState<Portfolio[]>([]);
   const [userHoldings, setUserHoldings] = useState(null);
   const [error, setError] = useState('');
   const [selectedProfileId, setSelectedProfileId] = useState('');
   const [tradeAmount, setTradeAmount] = useState('');
   const [purchaseMessages, setPurchaseMessages] = useState<string[]>([]);
 
+
+  useEffect(() => {
+    fetchCopyAccounts();
+  }, []);
+
   const fetchCopyAccounts = async () => {
     try {
-      // TODO: change if we get a domain
       const response = await fetch('api/copy-profiles');
       if (!response.ok) {
         throw new Error('Failed to fetch accounts');
       }
-      const data = await response.json();
+      const data: PortfoliosData = await response.json();
 
-      // Ensure data is an array
-      let accountsArray = [];
+
+      /*
+      let accountsArray: Portfolio[] = [];
       if (Array.isArray(data)) {
         accountsArray = data;
       } else if (data.portfolios && Array.isArray(data.portfolios)) {
@@ -44,7 +54,8 @@ export default function Home() {
       }
 
       setCopyAccounts(accountsArray);
-
+      */
+      setCopyAccounts(data.portfolios);
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
@@ -107,14 +118,14 @@ export default function Home() {
     }
   };
 
-  const renderPortfolio = (portfolios) => {
+  const renderPortfolio = (portfolio: Portfolio) => {
     return (
-      <div key={portfolios.portfolio_id} className="bg-gray-800 p-4 rounded mb-4">
-        <p><strong>ID:</strong> {portfolios.portfolio_id}</p>
-        <p><strong>Name:</strong> {portfolios.data.name}</p>
-        <p><strong>Account Type:</strong> {portfolios.data.type}</p>
-        <img src={portfolios.data.image} alt={portfolios.data.name} className="rounded-full w-36 h-36 object-cover mx-auto" />
-        <p><strong>Percentages:</strong> {JSON.stringify(portfolios.data.percentages)}</p>
+      <div key={portfolio.portfolio_id} className="bg-gray-800 p-4 rounded mb-4">
+        <p><strong>ID:</strong> {portfolio.portfolio_id}</p>
+        <p><strong>Name:</strong> {portfolio.name}</p>
+        <p><strong>Account Type:</strong> {portfolio.type}</p>
+        <img src={portfolio.image} alt={portfolio.name} className="rounded-full w-36 h-36 object-cover mx-auto" />
+        <p><strong>Percentages:</strong> {JSON.stringify(portfolio.percentages)}</p>
       </div>
     );
   };
@@ -206,7 +217,7 @@ export default function Home() {
           </div>
         )}
 
-        <Carousel />
+        <Carousel portfolios={accounts} />
 
         {/*
         {accounts && (
@@ -219,12 +230,12 @@ export default function Home() {
         )}
           */}
 
-          {accounts.length > 0 && (
-            <div>
-              <h2 className="text-xl mb-2">Accounts:</h2>
-              {accounts.map(renderPortfolio)}
-            </div>
-          )}
+        {accounts.length > 0 && (
+          <div>
+            <h2 className="text-xl mb-2">Accounts:</h2>
+            {accounts.map((portfolio) => renderPortfolio(portfolio))}
+          </div>
+        )}
 
       </div>
     </main>
