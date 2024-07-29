@@ -50,8 +50,8 @@ export default function AnimatedText({ text }: AnimatedTextProps) {
      * otherwise, it renders with an empty class string.
      * Inside the paragraph, a `motion.span` element is rendered with the `displayText` motion value.
      */
-    <p className={animationCompleted ? "animation-completed" : ""}>
-      <motion.span className="text-2xl font-sans">{displayText}</motion.span>
-    </p>
+    <span className={animationCompleted ? "animation-completed" : ""}>
+      <motion.span className="text-4xl font-sans text-violet-600">{displayText}</motion.span>
+    </span>
   );
 }

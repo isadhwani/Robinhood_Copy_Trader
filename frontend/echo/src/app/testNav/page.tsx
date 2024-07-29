@@ -6,15 +6,20 @@ import Image from "next/image";
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
-import Navigation from '@/components/navigation';
+import Navigation from '../../components/navigation';
+import { NavigationItem } from "@/models/models";
+
+
+
+
 
 { /* Navigation Tabs */ }
-const navigation = [
+const navigation : NavigationItem[] = [
   { name: 'Login', href: '/login', current: false },
   { name: 'Sign Up', href: '/signin', current: false },
 ]
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
   }
 

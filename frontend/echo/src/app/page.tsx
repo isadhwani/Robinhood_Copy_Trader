@@ -7,17 +7,13 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
 import logo from '@/images/logo-isaac.png'
-
-  ; import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
-import AnimatedText from "@/components/pages/landing-page/typewriter/animatedText";
-import CursorBlinker from "@/components/pages/landing-page/typewriter/cursorBlinker";
-import Navigation from "@/components/navigation";
+import Navigation from "../components/navigation"
+import AnimatedText from "../components/pages/landing-page/typewriter/animatedText";
+import CursorBlinker from "../components/pages/landing-page/typewriter/cursorBlinker";
 
 
-export interface IAnimTextProps {
-  delay: number;
-}
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -59,10 +55,15 @@ export default function Home() {
 
         <div className="flex flex-col items-center">
           <img alt="logo" src={`https://gcdnb.pbrd.co/images/74MbLqKX2pSi.png?o=1`} />
-          <AnimatedText text="Crypto Like a Pro."/>
-          <CursorBlinker />
-            
-  
+          <span>
+
+            <span className="pt-80">
+              <AnimatedText text="Crypto Like a Pro." />
+            </span>
+            <CursorBlinker />
+          </span>
+
+
         </div>
       </div>
     </>

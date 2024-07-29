@@ -7,20 +7,27 @@ import React from 'react';
 import Link from 'next/link';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { NavigationItem } from "@/models/models";
 // import logo from '@/images/mockLogo.png';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+function classNames(...classes: String[]) {
+  const classesadfa =  classes.filter(Boolean).join(' ');
+  console.log(classesadfa);
+  return classesadfa;
 }
 
 //Add type assertion syntax to the Navigation function
 // currentPath: navigation array
 // each individual page has a const navigation array and this is passed to Navigation
+interface NavigationProps {
+  currentPath:  NavigationItem[];
+}
 
-const Navigation = ({currentPath}) => {
+const Navigation = (props : NavigationProps) => {
+  const currentPath = props.currentPath
+
   return (
     <Disclosure as="nav" className="bg-dark-theme">
-
       {({ open }) => (
         <> 
 
@@ -73,7 +80,7 @@ const Navigation = ({currentPath}) => {
         { /* for mobile display */ }
         <DisclosurePanel className="sm:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            {currentPath.map((item) => (
+            {currentPath.map((item : NavigationItem) => (
               <DisclosureButton
                 key={item.name}
                 as="a"
