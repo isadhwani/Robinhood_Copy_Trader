@@ -1,4 +1,4 @@
-// Sign In Page
+// User Dashboard
 
 'use client';
 
@@ -7,8 +7,14 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
 
 import React from 'react';
+
+
 import Navigation from '@/components/navigation';
 import { useState } from 'react';
+import Carousel from '@/components/carousel';
+import { useEffect } from 'react';
+
+import { Portfolio, PortfoliosData } from '@/types/types';
 
 { /* Navigation Tabs */ }
 const navigation = [
@@ -16,24 +22,41 @@ const navigation = [
 ]
 
 export default function Home() {
-  const [accounts, setCopyAccounts] = useState([]);
-  const [userHoldings, setUserHoldings] = useState(null);
+  const [accounts, setCopyAccounts] = useState<Portfolio[]>([]);
+  const [userHoldings, setUserHoldings] = useState<any[]>([]);
   const [error, setError] = useState('');
   const [selectedProfileId, setSelectedProfileId] = useState('');
   const [tradeAmount, setTradeAmount] = useState('');
   const [purchaseMessages, setPurchaseMessages] = useState<string[]>([]);
 
+
+  useEffect(() => {
+    fetchCopyAccounts();
+  }, []);
+
   const fetchCopyAccounts = async () => {
     try {
-      //TODO: change if we get a domain
       const response = await fetch('api/copy-profiles');
       if (!response.ok) {
         throw new Error('Failed to fetch accounts');
       }
-      const data = await response.json();
-      setCopyAccounts(data);
-    }
-    catch (error) {
+      const data: PortfoliosData = await response.json();
+
+
+      /*
+      let accountsArray: Portfolio[] = [];
+      if (Array.isArray(data)) {
+        accountsArray = data;
+      } else if (data.portfolios && Array.isArray(data.portfolios)) {
+        accountsArray = data.portfolios;
+      } else {
+        throw new Error('Invalid data format');
+      }
+
+      setCopyAccounts(accountsArray);
+      */
+      setCopyAccounts(data.portfolios);
+    } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -53,10 +76,16 @@ export default function Home() {
         throw new Error('Failed to fetch user holdings');
       }
       const data = await response.json();
-      setUserHoldings(data.holdings);
+      setUserHoldings(data.holdings.results);
     } catch (error) {
       setError(error instanceof Error ? error.message : String(error));
     }
+  };
+
+  const renderHoldings = (holdings) => {
+    return (
+      <p><strong>{holdings.asset_code}</strong>: {holdings.total_quantity}</p>
+    );
   };
 
   const executeTrade = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -95,11 +124,24 @@ export default function Home() {
     }
   };
 
+  const renderPortfolio = (portfolio: Portfolio) => {
+    return (
+      <div key={portfolio.portfolio_id} className="bg-gray-800 p-4 rounded mb-4">
+        <p><strong>ID:</strong> {portfolio.portfolio_id}</p>
+        <p><strong>Name:</strong> {portfolio.name}</p>
+        <p><strong>Account Type:</strong> {portfolio.type}</p>
+        <img src={portfolio.image} alt={portfolio.name} className="rounded-full w-36 h-36 object-cover mx-auto" />
+        <p><strong>Percentages:</strong> {JSON.stringify(portfolio.percentages)}</p>
+      </div>
+    );
+  };
+
+
   return (
     <main className="flex min-h-screen flex-col justify-between bg-dark-theme-2">
-
       {/* Navigation */}
       <Navigation currentPath={navigation} />
+
       {/* Body */}
       {/*}
 
@@ -173,14 +215,15 @@ export default function Home() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {userHoldings && (
-          <div>
+          <div className="bg-slate-800 p-4 rounded mb-4">
             <h2 className="text-xl mb-2">Your Holdings:</h2>
-            <pre className="bg-gray-800 p-4 rounded overflow-auto">
-              {JSON.stringify(userHoldings, null, 2)}
-            </pre>
+            {userHoldings.map(renderHoldings)}
           </div>
         )}
 
+        <Carousel portfolios={accounts} />
+
+        {/*
         {accounts && (
           <div>
             <h2 className="text-xl mb-2">Accounts:</h2>
@@ -189,9 +232,14 @@ export default function Home() {
             </pre>
           </div>
         )}
+          */}
 
-
-
+        {accounts.length > 0 && (
+          <div>
+            <h2 className="text-xl mb-2">Accounts:</h2>
+            {accounts.map((portfolio) => renderPortfolio(portfolio))}
+          </div>
+        )}
 
       </div>
     </main>

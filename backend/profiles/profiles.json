@@ -2,73 +2,48 @@
   "portfolios": [
     {
       "portfolio_id": 0,
-      "data": {
-        "name": "Elon Musk",
-        "type": "individual",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_Prime_Minister%2C_Shri_Narendra_Modi_meeting_Mr._Elon_Musk_in_New_York%2C_USA_on_June_20%2C_2023_%282%29_%28cropped%29.jpg",
-        "holdings": {
-        },
-        "percentages": {
-          "ETH": 0.30,
-          "DOGE": 0.10,
-          "BTC": 0.60
-        }
+      "name": "Elon Musk",
+      "type": "individual",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/The_Prime_Minister%2C_Shri_Narendra_Modi_meeting_Mr._Elon_Musk_in_New_York%2C_USA_on_June_20%2C_2023_%282%29_%28cropped%29.jpg",
+      "holdings": {},
+      "percentages": {
+        "ETH": 0.30,
+        "DOGE": 0.10,
+        "BTC": 0.60
       }
     },
     {
       "portfolio_id": 1,
-      "data": {
-        "name": "Vitalik",
-        "type": "individual",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg",
-        "holdings": {
-          "ETH": 278178,
-          "USDC": 18748724,
-          "DOGE": 92066,
-          "BNB": 6.96
-        },
-        "percentages": {
-          "ETH": 0.95,
-          "USDC": 0.2,
-          "DOGE": 0.1,
-          "BNB": 0.1
-        }
+      "name": "Vitalik",
+      "type": "individual",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg",
+      "holdings": {
+        "ETH": 278178,
+        "USDC": 18748724,
+        "DOGE": 92066,
+        "BNB": 6.96
+      },
+      "percentages": {
+        "ETH": 0.95,
+        "USDC": 0.03,
+        "DOGE": 0.01,
+        "BNB": 0.01
       }
     },
     {
       "portfolio_id": 2,
-      "data": {
-        "name": "Michael J. Saylor",
-        "type": "individual",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Michael_Saylor_2022.png",
-        "holdings": {
-          "BTC": 129000
-        },
-        "percentages": {
-          "BTC": 1
-        }
+      "name": "Michael J. Saylor",
+      "type": "individual",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Michael_Saylor_2022.png",
+      "holdings": {
+        "BTC": 129000
+      },
+      "percentages": {
+        "BTC": 1
       }
     },
     {
       "portfolio_id": 3,
-      "data": {
-        "name": "Balanced",
-        "type": "algorithm",
-        "image": "https://sarsonfunds.com/building-a-balanced-10000-crypto-portfolio-in-2024/",
-        "holdings": {
-          "BTC": 0.031,
-          "ETH": 0.59,
-          "SOL": 9.540467482906651,
-          "LINK": 111.52416356877325,
-          "UNI": 194.06171162429652
-        },
-        "percentages": {
-          "BTC": 0.4,
-          "ETH": 0.3,
-          "LINK": 0.15,
-          "UNI": 0.15
-        }
-      },
       "name": "Balanced",
       "type": "algorithm",
       "image": "https://sarsonfunds.com/building-a-balanced-10000-crypto-portfolio-in-2024/",
@@ -80,31 +55,28 @@
         "UNI": 194.06171162429652
       },
       "percentages": {
-        "BTC": 0.25,
-        "ETH": 0.25,
+        "BTC": 0.4,
+        "ETH": 0.3,
         "LINK": 0.15,
         "UNI": 0.15
       }
     },
     {
       "portfolio_id": 4,
-      "data": {
-        "name": "Aggressive",
-        "type": "algorithm",
-        "image": "",
-        "holdings": {
-        },
-        "percentages": {
-          "BTC": 15,
-          "ETH": 15,
-          "SOL": 15,
-          "LINK": 15,
-          "UNI": 10,
-          "BNB": 10,
-          "AVAX": 10,
-          "DOGE": 5,
-          "SHIB": 5
-        }
+      "name": "Aggressive",
+      "type": "algorithm",
+      "image": "",
+      "holdings": {},
+      "percentages": {
+        "BTC": 0.15,
+        "ETH": 0.15,
+        "SOL": 0.15,
+        "LINK": 0.15,
+        "UNI": 0.10,
+        "BNB": 0.10,
+        "AVAX": 0.10,
+        "DOGE": 0.5,
+        "SHIB": 0.5
       }
     },
     {
@@ -113,7 +85,7 @@
       "type": "individual",
       "image": "https://media.pitchfork.com/photos/62043c007db00b3b97548cb5/1:1/w_1000,h_1000,c_limit/Snoop%20Dogg.jpg",
       "wallet_ids": {
-        "ETH" :  ["0xce90a7949bb78892f159f428d0dc23a8e3584d75", "0xe0036fb4b5a3b232acfc01fec3bd1d787a93da75"]
+        "ETH": ["0xce90a7949bb78892f159f428d0dc23a8e3584d75", "0xe0036fb4b5a3b232acfc01fec3bd1d787a93da75"]
       },
       "holdings": {
         "ETH": 5612.72,
@@ -124,12 +96,12 @@
         "M87": 6.59
       },
       "percentages": {
-        "ETH": 40.745,
-        "WETH": 52.925,
-        "BLUR": 2.159,
-        "LIT": 3.852,
-        "TOKEN": 0.152,
-        "M87": 0.048
+        "ETH": 0.40745,
+        "WETH": 0.52925,
+        "BLUR": 0.02159,
+        "LIT": 0.03852,
+        "TOKEN": 0.0152,
+        "M87": 0.0048
       }
     },
     {
@@ -145,8 +117,8 @@
         "ETH": 1040000
       },
       "percentages": {
-        "PEPE": 62.633,
-        "ETH": 37.012
+        "PEPE": 0.62633,
+        "ETH": 0.37012
       }
     },
     {
@@ -164,10 +136,10 @@
         "LINK": 25.49
       },
       "percentages": {
-        "ETH": 81.450,
-        "BOBA": 13.241,
-        "AAVE": 4.294,
-        "LINK": 0.714
+        "ETH": 0.81450,
+        "BOBA": 0.13241,
+        "AAVE": 0.04294,
+        "LINK": 0.00714
       }
     },
     {
@@ -187,12 +159,12 @@
         "SOCKS": 447.70
       },
       "percentages": {
-        "ETH": 17.2607,
-        "USDT": 42.728,
-        "USDC": 16.217,
-        "DAI": 7.575,
-        "WETH": 6.858,
-        "SOCKS": 5.605
+        "ETH": 0.172607,
+        "USDT": 0.42728,
+        "USDC": 0.16217,
+        "DAI": 0.07575,
+        "WETH": 0.06858,
+        "SOCKS": 0.05605
       }
     }
   ]
