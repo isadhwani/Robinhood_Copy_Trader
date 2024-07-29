@@ -42,19 +42,6 @@ export default function Home() {
       }
       const data: PortfoliosData = await response.json();
 
-
-      /*
-      let accountsArray: Portfolio[] = [];
-      if (Array.isArray(data)) {
-        accountsArray = data;
-      } else if (data.portfolios && Array.isArray(data.portfolios)) {
-        accountsArray = data.portfolios;
-      } else {
-        throw new Error('Invalid data format');
-      }
-
-      setCopyAccounts(accountsArray);
-      */
       setCopyAccounts(data.portfolios);
     } catch (error) {
       if (error instanceof Error) {
@@ -196,14 +183,14 @@ export default function Home() {
         </form>
 
 
-
-
+        {/*
         <button
           onClick={fetchCopyAccounts}
           className="bg-blue-500 text-white p-2 rounded mb-4"
         >
           Fetch Accounts to Copy
         </button>
+        */}
 
         <button
           onClick={fetchUserHoldings}
@@ -222,17 +209,6 @@ export default function Home() {
         )}
 
         <Carousel portfolios={accounts} />
-
-        {/*
-        {accounts && (
-          <div>
-            <h2 className="text-xl mb-2">Accounts:</h2>
-            <pre className="bg-gray-800 p-4 rounded overflow-auto">
-              {JSON.stringify(accounts, null, 2)}
-            </pre>
-          </div>
-        )}
-          */}
 
         {accounts.length > 0 && (
           <div>
